@@ -6,12 +6,12 @@
 /*   By: sarayapa <sarayapa@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:45:16 by sarayapa          #+#    #+#             */
-/*   Updated: 2025/10/01 17:50:23 by sarayapa         ###   ########.fr       */
+/*   Updated: 2025/10/02 11:22:43 by sarayapa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1

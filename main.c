@@ -5,7 +5,15 @@
 
 int main(void)
 {
-	int fd = open("hello",O_RDONLY);
-	printf("%s",get_next_line(fd));
-	return(0);
+	char *str = calloc(1, 1);
+	int fd1 = open("get_next_line.h", O_RDONLY);
+	while (str != NULL) {
+		free(str);
+		str = get_next_line(fd1);
+		if (str)
+    		printf("%s", str);
+	}
+	free(str);
+	close(fd1);
+	return 0;
 }
