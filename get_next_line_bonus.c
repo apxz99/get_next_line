@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sarayapa <sarayapa@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:47:27 by sarayapa          #+#    #+#             */
-/*   Updated: 2025/10/03 08:17:16 by sarayapa         ###   ########.fr       */
+/*   Updated: 2025/10/03 09:24:56 by sarayapa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_findnl(const char *src, size_t *i)
 {
@@ -80,7 +80,7 @@ int	readline(int fd, char *(*temp))
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[MAX_FD];
 	char		*temp;
 	size_t		i;
 	int			bytes_read;
@@ -88,16 +88,16 @@ char	*get_next_line(int fd)
 	i = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	checkbuffer(&buffer, &temp);
+	checkbuffer(&buffer[fd], &temp);
 	bytes_read = readline(fd, &temp);
 	if (bytes_read < 0)
 		return (free(temp), NULL);
-	free(buffer);
+	free(buffer[fd]);
 	if (ft_findnl(temp, &i))
-		buffer = ft_strdup(ft_findnl(temp, &i));
+		buffer[fd] = ft_strdup(ft_findnl(temp, &i));
 	else
-		buffer = ft_strdup("");
-	if (!buffer)
+		buffer[fd] = ft_strdup("");
+	if (!buffer[fd])
 		return (free(temp), NULL);
 	temp = ft_substr_free(temp, 0, i + 1);
 	if (!temp || temp[0] == '\0')

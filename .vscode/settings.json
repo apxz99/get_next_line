@@ -5,7 +5,8 @@
 		"stat.h": "c",
 		"stdlib.h": "c",
 		"unistd.h": "c",
-		"random": "c"
+		"random": "c",
+		"get_next_line_bonus.h": "c"
 	},
 	"C_Cpp.default.compilerPath": ""
 }
