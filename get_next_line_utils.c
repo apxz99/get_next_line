@@ -6,24 +6,11 @@
 /*   By: sarayapa <sarayapa@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:47:24 by sarayapa          #+#    #+#             */
-/*   Updated: 2025/10/03 08:02:36 by sarayapa         ###   ########.fr       */
+/*   Updated: 2025/10/09 11:38:35 by sarayapa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_putstrnl(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
-}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -100,4 +87,25 @@ char	*ft_strdup(const char *s)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+char	*ft_substr(char *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*temp;
+
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	i = 0;
+	temp = malloc((len + 1) * sizeof(char));
+	while (i < len)
+	{
+		temp[i] = s[start];
+		start++;
+		i++;
+	}
+	temp[i] = '\0';
+	return (temp);
 }
